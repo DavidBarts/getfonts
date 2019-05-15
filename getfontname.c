@@ -6860,7 +6860,7 @@ int main(int argc, char **argv) {
     int estat = 0;
 
     old_stdout = stdout;
-    stdout = fopen("/dev/null", "r");
+    stdout = fopen("/dev/null", "w");
     if (stdout == NULL) {
         perror("Unable to open /dev/null");
         exit(1);
