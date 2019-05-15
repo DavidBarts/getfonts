@@ -1,0 +1,41 @@
+#!/bin/bash
+# Extract .ttf's from a .ttc. Based on contrib code found distributed
+# with Fontforge.
+
+# Set this as needed
+gfhome="$HOME/src/getfonts"
+
+stripttc="$gfhome/stripttc"
+getfontname="$gfhome/getfontname"
+myname="${0##*/}"
+estat=0
+
+for ttc in "$@"
+do
+    if [[ "$ttc" != *.ttc ]]
+    then
+        1>&2 echo "$myname: '$ttc' - files must end in .ttc"
+        estat=1
+        continue
+    fi
+
+    echo "$ttc ..."
+
+    $stripttc "$ttc"
+    if [ $? -ne 0 ]
+    then
+        1>&2 echo "$myname: stripttc failed"
+        estat=1
+        continue
+    fi
+
+    base="$(basename "$ttc" .ttc)"
+    for ttf in "$base"_[0-9][0-9].ttf
+    do
+        targ="$($getfontname "$ttf").ttf" || continue
+        mv -v -n "$ttf" "$targ"
+    done
+done
+
+# AMF
+exit $estat
