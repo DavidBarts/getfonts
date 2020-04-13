@@ -18,7 +18,7 @@ haven't installed the command-line Xcode tools on your Mac yet, you must
 do that first. Be sure to install the command- line tools (they tend not
 to be installed by default).
 
-Xcode may be downloaded for free here: `https://en.wikipedia.org/<https://en.wikipedia.org/>`_
+Xcode may be downloaded for free here: `https://en.wikipedia.org/ <https://en.wikipedia.org/>`_
 
 Note that this section has line breaks in its input paragraphs. That is a test
 of whether or not Textile demands input in longlines form.
